@@ -1,12 +1,40 @@
 <!--index.wxml-->
 <scroll-view scroll-y class="scrollPage">
-  <view class="container">
-    <image src="{{imageUrl}}"></image>
-    <view class="view-wrap {{ loaded ? 'font-loaded' : '' }}">
-      <text class="view-wrap">距晶晶宝宝自由还剩：</text>
-      <i-count-down target="{{targetTime1}}" show-day="{{true}}" format="{{myFormat1}}" countdown-class="big" clear-timer="{{clearTimer}}"></i-count-down>
-    </view>
-    <text class="view-wrap">{{title}}</text>
-     <text class="view-wrap">{{content}}</text>
+
+  <image src="{{imageUrl}}"></image>
+  <view class="view-wrap {{ loaded ? 'font-loaded' : '' }}">
+    <text class="view-wrap">距晶晶宝宝自由还剩：</text>
+    <i-count-down target="{{targetTime1}}" show-day="{{true}}" format="{{myFormat1}}" countdown-class="big" clear-timer="{{clearTimer}}"></i-count-down>
   </view>
+  <text class="view-wrap">{{title}}</text>
+  <text class="view-wrap">{{content}}</text>
+  <text class="view-title">和我分享下心情吧</text>
+  <form>
+    <view class="cu-form-group margin-top">
+      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="多行文本输入框"></textarea>
+    </view>
+
+    <view class="cu-bar bg-white margin-top">
+      <view class="action">
+        图片上传
+      </view>
+      <view class="action">
+        1/4
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+          <image src='{{imgList[index]}}' mode='aspectFill'></image>
+          <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+            <text class="cuIcon-close"></text>
+          </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+          <text class="cuIcon-cameraadd"></text>
+        </view>
+      </view>
+    </view>
+  </form>
+
 </scroll-view>
