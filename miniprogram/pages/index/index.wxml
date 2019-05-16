@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<scroll-view scroll-y class="scrollPage">
+  <view class="container">
+    <image src="{{imageUrl}}"></image>
+    <view class="view-wrap {{ loaded ? 'font-loaded' : '' }}">
+      <text class="view-wrap">距晶晶宝宝自由还剩：</text>
+      <i-count-down target="{{targetTime1}}" show-day="{{true}}" format="{{myFormat1}}" countdown-class="big" clear-timer="{{clearTimer}}"></i-count-down>
+    </view>
+    <text class="view-wrap">{{title}}</text>
+     <text class="view-wrap">{{content}}</text>
+  </view>
+</scroll-view>
